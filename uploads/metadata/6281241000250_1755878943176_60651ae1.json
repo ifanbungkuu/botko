@@ -1,0 +1,14 @@
+{
+  "userPhone": "6281241000250@s.whatsapp.net",
+  "width": 720,
+  "height": 1600,
+  "format": "jpeg",
+  "space": "srgb",
+  "channels": 3,
+  "depth": "uchar",
+  "density": 72,
+  "hasAlpha": false,
+  "orientation": 1,
+  "exif": true,
+  "icc": true
+}

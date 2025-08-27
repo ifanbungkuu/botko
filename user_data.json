@@ -1,0 +1,17 @@
+{
+  "6281241000250@c.us": {
+    "trialUsed": true,
+    "pendingPayment": {
+      "service": {
+        "service": "multi_image",
+        "orderId": "ORDER_1756151306363_6281241000250",
+        "amount": 10000
+      },
+      "timestamp": 1756151307357
+    }
+  },
+  "6282296116110@c.us": {
+    "trialUsed": true,
+    "pendingPayment": null
+  }
+}

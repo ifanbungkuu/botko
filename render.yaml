@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: whatsapp-photo-editor-bot
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+    # Environment variables lainnya harus di-set di dashboard Render
+    # termasuk DOKU_CLIENT_ID, DOKU_SHARED_KEY, DOKU_SECRET_KEY, dll.
