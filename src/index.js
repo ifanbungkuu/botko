@@ -1,7 +1,9 @@
 const express = require('express');
-const WhatsAppWebBot = require('./bot/WhatsAppWebBot');
 const logger = require('./utils/logger');
 const path = require('path');
+
+// Load environment variables
+require('dotenv').config();
 
 // Create Express app
 const app = express();
@@ -95,25 +97,34 @@ app.post('/api/qr-reset', (req, res) => {
   }
 });
 
-// Initialize WhatsApp bot
-const whatsappBot = new WhatsAppWebBot();
+// Initialize WhatsApp bot variable
+let whatsappBot = null;
 
 // Start Express server
 app.listen(PORT, () => {
   logger.info(`HTTP server running on port ${PORT}`);
   console.log(`Server is running on port ${PORT}`);
   
-  // Start WhatsApp bot after server is running
-  whatsappBot.start()
-    .then(() => {
-      logger.info('WhatsApp Bot started successfully');
-      console.log('WhatsApp Bot is running...');
-    })
-    .catch((error) => {
-      logger.error('Failed to start WhatsApp Bot:', error);
-      console.error('Error starting bot:', error);
-      process.exit(1);
-    });
+  // Initialize WhatsApp bot after server is running
+  try {
+    const WhatsAppWebBot = require('./bot/WhatsAppWebBot');
+    whatsappBot = new WhatsAppWebBot();
+    
+    // Start WhatsApp bot
+    whatsappBot.start()
+      .then(() => {
+        logger.info('WhatsApp Bot started successfully');
+        console.log('WhatsApp Bot is running...');
+      })
+      .catch((error) => {
+        logger.error('Failed to start WhatsApp Bot:', error);
+        console.error('Error starting bot:', error);
+        // Don't exit process, keep server running
+      });
+  } catch (error) {
+    logger.error('Failed to initialize WhatsApp Bot:', error);
+    console.error('WhatsApp Bot initialization failed, but server will continue running');
+  }
 });
 
 // Handle graceful shutdown
