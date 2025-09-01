@@ -2,6 +2,7 @@
 const { v4: uuidv4 } = require('uuid');
 const { createPaymentLink } = require('../services/dokuPaymentService');
 const { CONFIG, MESSAGES, MENU_OPTIONS, WAITING_STATES, PRICING } = require('../constants');
+const { MENU_FREE, WELCOME_PAID } = require('../constants/messages');
 const UserState = require('../models/UserState');
 const { paymentEvents } = require('../services/EventManager');
 const imageProcessQueue = require('../queues/imageProcessQueue');
@@ -94,15 +95,24 @@ class MessageHandler {
     async _handleBoskuCommand(chat, from) {
         this.userStates.set(from, new UserState(MENU_OPTIONS.MAIN));
         await chat.sendMessage(MESSAGES.WELCOME);
+        
+        // Send menu after welcome message
+        const remainingTrials = this.userDataManager.getRemainingTrials(from);
+        
+        if (remainingTrials > 0) {
+            await chat.sendMessage(MENU_FREE.replace('%trials%', remainingTrials));
+        } else {
+            await chat.sendMessage(WELCOME_PAID);
+        }
     }
 
     async _handleMenuCommand(chat, from) {
         const remainingTrials = this.userDataManager.getRemainingTrials(from);
         
         if (remainingTrials > 0) {
-            return chat.sendMessage(MESSAGES.MENU_FREE.replace('%trials%', remainingTrials));
+            return chat.sendMessage(MENU_FREE.replace('%trials%', remainingTrials));
         } else {
-            return chat.sendMessage(MESSAGES.WELCOME_PAID);
+            return chat.sendMessage(WELCOME_PAID);
         }
     }
 
