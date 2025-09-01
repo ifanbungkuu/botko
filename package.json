@@ -4,7 +4,7 @@
   "description": "WhatsApp Bot for Photo Editing with QRIS Payment Integration",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/simple-server.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/simple-server.js",
     "start:full": "node src/index.js",
     "dev:full": "nodemon src/index.js",
