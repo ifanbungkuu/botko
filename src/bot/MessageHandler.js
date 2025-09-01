@@ -53,39 +53,61 @@ class MessageHandler {
     }
 
     async handleMessage(message) {
-        const contact = await message.getContact();
-        const from = message.from;
-        const messageText = message.body;
-        const isImage = message.hasMedia && message.type === 'image';
+        try {
+            const contact = await message.getContact();
+            const from = message.from;
+            const messageText = message.body;
+            const isImage = message.hasMedia && message.type === 'image';
 
-        logger.info(`Message from ${contact.pushname || from}: ${messageText}`);
-        
-        const chat = await message.getChat();
+            logger.info(`📨 Message received from ${contact.pushname || from}: "${messageText}"`);
+            console.log(`📨 Message received from ${contact.pushname || from}: "${messageText}"`);
+            
+            const chat = await message.getChat();
 
-        if (messageText.toLowerCase().includes('bosku')) {
-            return this._handleBoskuCommand(chat, from);
-        }
-        
-        if (messageText.toLowerCase() === 'menu') {
-            return this._handleMenuCommand(chat, from);
-        }
-        
-        const userState = this.userStates.get(from);
-        
-        if (!userState) {
-            return;
-        }
-        
-        if (userState.state === MENU_OPTIONS.MAIN) {
-            return this._handleMainMenu(chat, messageText, from);
-        }
-        
-        if (messageText && !isImage) {
-            return this._handleTextInput(chat, messageText, userState, from);
-        }
-        
-        if (isImage) {
-            return this._handleImageInput(message, userState);
+            // Check for bosku command
+            if (messageText && messageText.toLowerCase().includes('bosku')) {
+                logger.info(`🎯 Handling bosku command for ${from}`);
+                console.log(`🎯 Handling bosku command for ${from}`);
+                return this._handleBoskuCommand(chat, from);
+            }
+            
+            // Check for menu command
+            if (messageText && messageText.toLowerCase() === 'menu') {
+                logger.info(`📋 Handling menu command for ${from}`);
+                console.log(`📋 Handling menu command for ${from}`);
+                return this._handleMenuCommand(chat, from);
+            }
+            
+            const userState = this.userStates.get(from);
+            logger.info(`👤 User state for ${from}: ${userState ? JSON.stringify(userState) : 'null'}`);
+            
+            if (!userState) {
+                logger.info(`❌ No user state found for ${from}, ignoring message`);
+                console.log(`❌ No user state found for ${from}, ignoring message`);
+                return;
+            }
+            
+            if (userState.state === MENU_OPTIONS.MAIN) {
+                logger.info(`🔢 Handling main menu selection for ${from}: ${messageText}`);
+                return this._handleMainMenu(chat, messageText, from);
+            }
+            
+            if (messageText && !isImage) {
+                logger.info(`💬 Handling text input for ${from}`);
+                return this._handleTextInput(chat, messageText, userState, from);
+            }
+            
+            if (isImage) {
+                logger.info(`🖼️ Handling image input for ${from}`);
+                return this._handleImageInput(message, userState);
+            }
+            
+            logger.info(`⚠️ No handler matched for message from ${from}`);
+            console.log(`⚠️ No handler matched for message from ${from}`);
+            
+        } catch (error) {
+            logger.error(`💥 Error in handleMessage for ${message.from}:`, error);
+            console.error(`💥 Error in handleMessage for ${message.from}:`, error);
         }
     }
 
