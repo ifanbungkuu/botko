@@ -23,8 +23,13 @@ class WhatsAppWebBot {
                     '--disable-accelerated-2d-canvas',
                     '--no-first-run',
                     '--no-zygote',
-                    '--disable-gpu'
-                ]
+                    '--disable-gpu',
+                    '--disable-web-security',
+                    '--disable-features=VizDisplayCompositor'
+                ],
+                handleSIGINT: false,
+                handleSIGTERM: false,
+                handleSIGHUP: false
             }
         });
         

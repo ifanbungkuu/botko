@@ -123,6 +123,19 @@ class MessageHandler {
         if (PRICING[option]) {
             const selectedPackage = PRICING[option];
             const price = selectedPackage.price;
+            
+            // Check if DOKU payment is configured
+            if (!process.env.DOKU_CLIENT_ID || !process.env.DOKU_SECRET_KEY) {
+                return chat.sendMessage(`📦 Paket ${option.toUpperCase()} - Rp ${price.toLocaleString('id-ID')}
+
+⚠️ Sistem pembayaran sedang dalam maintenance. 
+
+Untuk sementara, silakan hubungi admin untuk melakukan pembayaran manual:
+📱 WhatsApp: ${CONFIG.ADMIN_NUMBER}
+
+Setelah pembayaran dikonfirmasi, Anda akan mendapatkan akses ke semua fitur paket ${option}.`);
+            }
+
             const contact = await chat.getContact();
 
             try {
@@ -146,9 +159,6 @@ class MessageHandler {
                         amount: price
                     });
 
-                    // We don't set a user state here, because after payment,
-                    // the user should be able to use the features of the package.
-                    // The payment success handler will need to be updated to grant the package features.
                     return chat.sendMessage(MESSAGES.PAYMENT_PROMPT(price, paymentLink));
                 } else {
                     logger.error("❌ Response DOKU tidak berisi link:", paymentResponse);
@@ -156,7 +166,14 @@ class MessageHandler {
                 }
             } catch (error) {
                 logger.error('Error creating payment link:', error);
-                return chat.sendMessage('Maaf, terjadi kesalahan dalam membuat link pembayaran. Silakan coba lagi nanti.');
+                return chat.sendMessage(`📦 Paket ${option.toUpperCase()} - Rp ${price.toLocaleString('id-ID')}
+
+⚠️ Sistem pembayaran otomatis sedang bermasalah.
+
+Silakan hubungi admin untuk pembayaran manual:
+📱 WhatsApp: ${CONFIG.ADMIN_NUMBER}
+
+Sebutkan kode order: ORDER_${Date.now()}_${from.split('@')[0]}`);
             }
         }
 
