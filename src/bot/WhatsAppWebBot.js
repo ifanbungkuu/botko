@@ -12,6 +12,9 @@ const { botClient } = require('./BotClient');
 
 class WhatsAppWebBot {
     constructor() {
+        this.isInitializing = false;
+        this.isReady = false;
+        
         this.client = new Client({
             authStrategy: new LocalAuth({ dataPath: CONFIG.SESSION_PATH }),
             puppeteer: { 
@@ -76,6 +79,9 @@ class WhatsAppWebBot {
         });
 
         this.client.on('ready', async () => {
+            this.isReady = true;
+            this.isInitializing = false;
+            
             await this.userDataManager.load();
             
             // Clean up QR code file when authenticated
@@ -89,7 +95,8 @@ class WhatsAppWebBot {
                 logger.warn('Failed to clean up QR code file:', error);
             }
             
-            logger.info('WhatsApp Web Bot is ready!');
+            logger.info('✅ WhatsApp Web Bot is ready and connected!');
+            console.log('✅ WhatsApp Web Bot is ready and connected!');
         });
 
         this.client.on('message', async (message) => {
@@ -107,17 +114,60 @@ class WhatsAppWebBot {
         });
 
         this.client.on('disconnected', (reason) => {
+            this.isReady = false;
+            this.isInitializing = false;
+            
             logger.warn('Client was logged out', reason);
+            console.log('🔌 Client disconnected:', reason);
+            
+            // Don't auto-reconnect immediately to prevent loops
+            // Let Railway restart the container instead
+            logger.info('⏳ Waiting for manual restart or container restart...');
+            console.log('⏳ Waiting for manual restart or container restart...');
         });
 
         this.client.on('auth_failure', (error) => {
             logger.error('Authentication failure:', error);
+            console.error('🚫 Auth failure:', error);
+        });
+
+        // Add connection state monitoring
+        this.client.on('change_state', (state) => {
+            logger.info(`📱 WhatsApp state changed to: ${state}`);
+            console.log(`📱 WhatsApp state changed to: ${state}`);
+        });
+
+        // Monitor connection issues
+        this.client.on('change_battery', (batteryInfo) => {
+            logger.info(`🔋 Phone battery: ${batteryInfo.battery}% (plugged: ${batteryInfo.plugged})`);
         });
     }
 
     async start() {
-        logger.info('Starting WhatsApp Web Bot...');
-        await this.client.initialize();
+        if (this.isInitializing) {
+            logger.warn('⚠️ Bot is already initializing, skipping...');
+            console.log('⚠️ Bot is already initializing, skipping...');
+            return;
+        }
+        
+        if (this.isReady) {
+            logger.warn('⚠️ Bot is already ready and connected, skipping...');
+            console.log('⚠️ Bot is already ready and connected, skipping...');
+            return;
+        }
+        
+        this.isInitializing = true;
+        logger.info('🚀 Starting WhatsApp Web Bot...');
+        console.log('🚀 Starting WhatsApp Web Bot...');
+        
+        try {
+            await this.client.initialize();
+        } catch (error) {
+            this.isInitializing = false;
+            logger.error('❌ Failed to initialize WhatsApp client:', error);
+            console.error('❌ Failed to initialize WhatsApp client:', error);
+            throw error;
+        }
     }
 }
 
