@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp QR Code Scanner</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+      }
+      h1 {
+        color: #25d366;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+      .qr-code {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        border: 2px dashed #25d366;
+      }
+      .qr-code img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      .instructions {
+        margin-top: 20px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .refresh-btn {
+        background-color: #25d366;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+        transition: background-color 0.3s;
+      }
+      .refresh-btn:hover {
+        background-color: #128c7e;
+      }
+      .status {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Scan WhatsApp QR Code</h1>
+      <div class="qr-code">
+        <img
+          id="qrImage"
+          src="/qrcodes/whatsapp-qr.png"
+          alt="WhatsApp QR Code"
+        />
+      </div>
+      <div class="instructions">
+        <p>
+          Buka WhatsApp di ponsel Anda, ketuk <strong>Menu</strong> ⋮ atau
+          <strong>Setelan</strong>, lalu pilih
+          <strong>Perangkat tertaut</strong> atau
+          <strong>Linked Devices</strong>.
+        </p>
+        <p>Ketuk <strong>Link a Device</strong> dan pindai kode QR di atas.</p>
+      </div>
+      <button class="refresh-btn" onclick="refreshQRCode()">
+        Refresh QR Code
+      </button>
+      <button
+        class="refresh-btn"
+        onclick="resetQRCode()"
+        style="background-color: #ff8800; margin-left: 10px"
+      >
+        Reset Bot
+      </button>
+      <div class="status" id="statusMessage"></div>
+    </div>
+
+    <script>
+      async function checkQRStatus() {
+        try {
+          const response = await fetch("/api/qr-status");
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error("Error checking QR status:", error);
+          return { status: "error", message: "Gagal memeriksa status QR code" };
+        }
+      }
+
+      async function refreshQRCode() {
+        const statusMessage = document.getElementById("statusMessage");
+        const qrImage = document.getElementById("qrImage");
+
+        statusMessage.textContent = "Memeriksa QR code...";
+
+        // Check QR status first
+        const status = await checkQRStatus();
+
+        if (status.status === "available") {
+          // Add timestamp to bypass cache
+          const timestamp = new Date().getTime();
+          qrImage.src = `/qrcodes/whatsapp-qr.png?t=${timestamp}`;
+
+          qrImage.onload = function () {
+            statusMessage.textContent = "QR code tersedia! Silakan scan.";
+            statusMessage.style.color = "#25d366";
+            setTimeout(() => {
+              statusMessage.textContent = "";
+              statusMessage.style.color = "#888";
+            }, 3000);
+          };
+
+          qrImage.onerror = function () {
+            statusMessage.textContent = "Gagal memuat QR code.";
+            statusMessage.style.color = "#ff4444";
+          };
+        } else {
+          statusMessage.textContent = status.message;
+          statusMessage.style.color = "#ff8800";
+          qrImage.src =
+            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y5ZjlmOSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM4ODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1lbXVhdCBRUiBjb2RlLi4uPC90ZXh0Pjwvc3ZnPg==";
+        }
+      }
+
+      async function resetQRCode() {
+        const statusMessage = document.getElementById("statusMessage");
+
+        statusMessage.textContent = "Mereset bot dan QR code...";
+        statusMessage.style.color = "#ff8800";
+
+        try {
+          const response = await fetch("/api/qr-reset", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          const data = await response.json();
+
+          if (data.status === "success") {
+            statusMessage.textContent = data.message;
+            statusMessage.style.color = "#25d366";
+
+            // Wait a bit then start checking for new QR code
+            setTimeout(() => {
+              refreshQRCode();
+            }, 5000);
+          } else {
+            statusMessage.textContent = data.message;
+            statusMessage.style.color = "#ff4444";
+          }
+        } catch (error) {
+          console.error("Error resetting QR code:", error);
+          statusMessage.textContent = "Gagal mereset QR code";
+          statusMessage.style.color = "#ff4444";
+        }
+      }
+
+      // Auto-refresh every 15 seconds to check for new QR codes
+      setInterval(refreshQRCode, 15000);
+
+      // Initial load
+      refreshQRCode();
+    </script>
+  </body>
+</html>
