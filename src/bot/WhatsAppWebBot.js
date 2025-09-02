@@ -4,7 +4,7 @@ const qrcodeTerminal = require('qrcode-terminal');
 const QRCode = require('qrcode');
 const fs = require('fs');
 const path = require('path');
-const { CONFIG } = require('../constants');
+const { CONFIG } = require('../config');
 const MessageHandler = require('./MessageHandler');
 const UserDataManager = require('../models/UserDataManager');
 const logger = require('../utils/logger');
@@ -26,6 +26,7 @@ class WhatsAppWebBot {
                     '--disable-accelerated-2d-canvas',
                     '--no-first-run',
                     '--no-zygote',
+                    '--single-process',
                     '--disable-gpu',
                     '--disable-web-security',
                     '--disable-features=VizDisplayCompositor'
@@ -84,7 +85,7 @@ class WhatsAppWebBot {
             
             await this.userDataManager.load();
             
-            // Clean up QR code file when authenticated
+            // Clean up QR code file when authenticated to prevent repeated QR generation
             try {
                 const qrCodeFile = path.join(__dirname, '../../public/qrcodes/whatsapp-qr.png');
                 if (fs.existsSync(qrCodeFile)) {

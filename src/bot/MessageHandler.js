@@ -1,8 +1,7 @@
 // filename: src/bot/MessageHandler.js
 const { v4: uuidv4 } = require('uuid');
 const { createPaymentLink } = require('../services/dokuPaymentService');
-const { CONFIG, MESSAGES, MENU_OPTIONS, WAITING_STATES, PRICING } = require('../constants');
-const { MENU_FREE, WELCOME_PAID } = require('../constants/messages');
+const { CONFIG, MESSAGES, MENU_OPTIONS, WAITING_STATES, PRICING } = require('../config');
 const UserState = require('../models/UserState');
 const { paymentEvents } = require('../services/EventManager');
 const imageProcessQueue = require('../queues/imageProcessQueue');
@@ -122,9 +121,9 @@ class MessageHandler {
         const remainingTrials = this.userDataManager.getRemainingTrials(from);
         
         if (remainingTrials > 0) {
-            await chat.sendMessage(MENU_FREE.replace('%trials%', remainingTrials));
+            await chat.sendMessage(MESSAGES.MENU_FREE.replace('%trials%', remainingTrials));
         } else {
-            await chat.sendMessage(WELCOME_PAID);
+            await chat.sendMessage(MESSAGES.WELCOME_PAID);
         }
     }
 
@@ -132,9 +131,9 @@ class MessageHandler {
         const remainingTrials = this.userDataManager.getRemainingTrials(from);
         
         if (remainingTrials > 0) {
-            return chat.sendMessage(MENU_FREE.replace('%trials%', remainingTrials));
+            return chat.sendMessage(MESSAGES.MENU_FREE.replace('%trials%', remainingTrials));
         } else {
-            return chat.sendMessage(WELCOME_PAID);
+            return chat.sendMessage(MESSAGES.WELCOME_PAID);
         }
     }
 

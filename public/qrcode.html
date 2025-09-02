@@ -117,13 +117,36 @@
       async function refreshQRCode() {
         const statusMessage = document.getElementById("statusMessage");
         const qrImage = document.getElementById("qrImage");
+        const qrContainer = document.querySelector(".qr-code");
+        const instructions = document.querySelector(".instructions");
 
         statusMessage.textContent = "Memeriksa QR code...";
 
         // Check QR status first
         const status = await checkQRStatus();
 
-        if (status.status === "available") {
+        if (status.status === "connected") {
+          // Hide QR code interface and show connected status
+          qrContainer.style.display = "none";
+          instructions.style.display = "none";
+
+          // Show connected status
+          statusMessage.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+              <div style="font-size: 48px; margin-bottom: 20px;">✅</div>
+              <h2 style="color: #25d366; margin-bottom: 10px;">Bot Terhubung!</h2>
+              <p style="color: #555; margin-bottom: 20px;">WhatsApp bot sudah siap menerima pesan.</p>
+              <p style="color: #888; font-size: 14px;">
+                Kirim pesan <strong>"bosku"</strong> ke bot untuk memulai menggunakan layanan edit foto.
+              </p>
+            </div>
+          `;
+          statusMessage.style.color = "#25d366";
+        } else if (status.status === "available") {
+          // Show QR code interface
+          qrContainer.style.display = "block";
+          instructions.style.display = "block";
+
           // Add timestamp to bypass cache
           const timestamp = new Date().getTime();
           qrImage.src = `/qrcodes/whatsapp-qr.png?t=${timestamp}`;
@@ -142,10 +165,18 @@
             statusMessage.style.color = "#ff4444";
           };
         } else {
-          statusMessage.textContent = status.message;
+          // Hide QR code interface and show waiting status
+          qrContainer.style.display = "none";
+          instructions.style.display = "none";
+
+          statusMessage.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+              <div style="font-size: 48px; margin-bottom: 20px;">⏳</div>
+              <h2 style="color: #ff8800; margin-bottom: 10px;">Bot Sedang Memulai...</h2>
+              <p style="color: #555; margin-bottom: 20px;">${status.message}</p>
+            </div>
+          `;
           statusMessage.style.color = "#ff8800";
-          qrImage.src =
-            "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y5ZjlmOSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM4ODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1lbXVhdCBRUiBjb2RlLi4uPC90ZXh0Pjwvc3ZnPg==";
         }
       }
 

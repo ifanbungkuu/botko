@@ -1,9 +1,8 @@
 const { MessageMedia } = require('whatsapp-web.js');
-const { MESSAGES, CONFIG, MENU_OPTIONS, PRICING } = require('../constants');
+const { MESSAGES, CONFIG, MENU_OPTIONS, PRICING, WAITING_STATES } = require('../config');
 const { createPaymentLink } = require('../services/dokuPaymentService');
-const Watermarker = require('../utils/Watermarker');
+const Watermarker = require('../services/Watermarker');
 const UserState = require('../models/UserState');
-const { WAITING_STATES } = require('../models/constants');
 
 class MessageHandler {
     constructor(client, userDataManager) {

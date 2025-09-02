@@ -47,7 +47,13 @@ app.get('/api/qr-status', (req, res) => {
   const qrCodePath = path.join(__dirname, '../public/qrcodes/whatsapp-qr.png');
   const fs = require('fs');
   
-  if (fs.existsSync(qrCodePath)) {
+  // Check if bot is connected
+  if (whatsappBot && whatsappBot.isReady) {
+    res.json({
+      status: 'connected',
+      message: 'Bot sudah terhubung dan siap digunakan'
+    });
+  } else if (fs.existsSync(qrCodePath)) {
     const stats = fs.statSync(qrCodePath);
     res.json({
       status: 'available',

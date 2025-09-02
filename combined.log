@@ -1,1 +1,102 @@
 {"level":"error","message":"Error creating payment link: Response DOKU tidak valid: link pembayaran tidak ditemukan","service":"whatsapp-bot","stack":"Error: Response DOKU tidak valid: link pembayaran tidak ditemukan\n    at createPaymentLink (C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\src\\services\\dokuPaymentService.js:126:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async MessageHandler._handleMainMenu (C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\src\\bot\\MessageHandler.js:126:41)\n    at async Client.<anonymous> (C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\src\\bot\\WhatsAppWebBot.js:57:17)","timestamp":"2025-08-27 10:49:57"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-08-30 23:52:42"}
+{"level":"info","message":"Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-08-30 23:52:42"}
+{"level":"error","message":"Protocol error (Runtime.callFunctionOn): Target closed.","name":"ProtocolError","originalMessage":"","service":"whatsapp-bot","stack":"ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.\n    at C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\node_modules\\puppeteer-core\\lib\\cjs\\puppeteer\\common\\Connection.js:329:24\n    at new Promise (<anonymous>)\n    at CDPSessionImpl.send (C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\node_modules\\puppeteer-core\\lib\\cjs\\puppeteer\\common\\Connection.js:325:16)\n    at ExecutionContext._ExecutionContext_evaluate (C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\node_modules\\puppeteer-core\\lib\\cjs\\puppeteer\\common\\ExecutionContext.js:211:46)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async ExecutionContext.evaluate (C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\node_modules\\puppeteer-core\\lib\\cjs\\puppeteer\\common\\ExecutionContext.js:107:16)","timestamp":"2025-08-31 00:01:54"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-02 01:27:24"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-02 01:27:25"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-02 01:27:36"}
+{"0":"L","1":"O","2":"G","3":"O","4":"U","5":"T","level":"warn","message":"Client was logged out","service":"whatsapp-bot","timestamp":"2025-09-02 01:27:38"}
+{"level":"info","message":"⏳ Waiting for manual restart or container restart...","service":"whatsapp-bot","timestamp":"2025-09-02 01:27:38"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-02 01:28:19"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-02 01:28:20"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:28:29"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:28:29"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:28:29"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-02 01:28:29"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:29:28"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:29:29"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:29:29"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:29:48"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:29:49"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:29:49"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:08"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:09"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:09"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:29"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:29"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:29"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:49"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:49"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:30:49"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:32:00"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:32:00"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:32:00"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:00"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:00"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:00"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:20"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:20"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:20"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:40"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:40"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:33:40"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:34:00"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:34:00"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:34:00"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:34:20"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:34:20"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:34:20"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:35:31"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:35:31"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:35:31"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:31"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:31"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:31"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:51"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:51"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:51"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:55"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:55"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 01:36:55"}
+{"level":"info","message":"LOADING SCREEN 100%: WhatsApp","service":"whatsapp-bot","timestamp":"2025-09-02 01:37:46"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-02 01:40:33"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-02 01:40:33"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-02 01:40:40"}
+{"level":"info","message":"LOADING SCREEN 100%: WhatsApp","service":"whatsapp-bot","timestamp":"2025-09-02 01:40:40"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-02 01:41:27"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-02 01:41:28"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-02 01:41:33"}
+{"level":"info","message":"LOADING SCREEN 100%: WhatsApp","service":"whatsapp-bot","timestamp":"2025-09-02 01:41:33"}
+{"0":"L","1":"O","2":"G","3":"O","4":"U","5":"T","level":"warn","message":"Client was logged out","service":"whatsapp-bot","timestamp":"2025-09-02 01:45:46"}
+{"level":"info","message":"⏳ Waiting for manual restart or container restart...","service":"whatsapp-bot","timestamp":"2025-09-02 01:45:46"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:16"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:17"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:30"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:30"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:30"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:30"}
+{"level":"info","message":"LOADING SCREEN 100%: WhatsApp","service":"whatsapp-bot","timestamp":"2025-09-02 02:00:54"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-02 16:55:32"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-02 16:55:34"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 16:55:45"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 16:55:45"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 16:55:45"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-02 16:55:45"}
+{"level":"info","message":"LOADING SCREEN 100%: WhatsApp","service":"whatsapp-bot","timestamp":"2025-09-02 16:56:00"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-02 16:59:15"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-02 16:59:15"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-02 16:59:15"}
+{"0":"L","1":"O","2":"G","3":"O","4":"U","5":"T","level":"warn","message":"Client was logged out","service":"whatsapp-bot","timestamp":"2025-09-02 16:59:15"}
+{"level":"info","message":"⏳ Waiting for manual restart or container restart...","service":"whatsapp-bot","timestamp":"2025-09-02 16:59:15"}
+{"level":"info","message":"HTTP server running on port 3000","service":"whatsapp-bot","timestamp":"2025-09-03 00:21:37"}
+{"level":"info","message":"🚀 Starting WhatsApp Web Bot...","service":"whatsapp-bot","timestamp":"2025-09-03 00:21:38"}
+{"level":"info","message":"QR Code received, please scan.","service":"whatsapp-bot","timestamp":"2025-09-03 00:21:48"}
+{"level":"info","message":"QR code saved as PNG: C:\\xampp\\htdocs\\wa\\restorasi-foto-wa\\public\\qrcodes\\whatsapp-qr.png","service":"whatsapp-bot","timestamp":"2025-09-03 00:21:48"}
+{"level":"info","message":"QR code available at http://localhost:3000/qrcode","service":"whatsapp-bot","timestamp":"2025-09-03 00:21:48"}
+{"level":"info","message":"WhatsApp Bot started successfully","service":"whatsapp-bot","timestamp":"2025-09-03 00:21:48"}
+{"level":"info","message":"LOADING SCREEN 100%: WhatsApp","service":"whatsapp-bot","timestamp":"2025-09-03 00:22:14"}
+{"level":"info","message":"QR code file cleaned up after successful authentication","service":"whatsapp-bot","timestamp":"2025-09-03 00:22:19"}
+{"level":"info","message":"✅ WhatsApp Web Bot is ready and connected!","service":"whatsapp-bot","timestamp":"2025-09-03 00:22:19"}
+{"level":"info","message":"📨 Message received from Anak Morowali: \"Bosku\"","service":"whatsapp-bot","timestamp":"2025-09-03 00:23:06"}
+{"level":"info","message":"🎯 Handling bosku command for 6281241000250@c.us","service":"whatsapp-bot","timestamp":"2025-09-03 00:23:06"}
+{"level":"info","message":"Shutting down WhatsApp Bot and server...","service":"whatsapp-bot","timestamp":"2025-09-03 00:47:41"}

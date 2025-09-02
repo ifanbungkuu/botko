@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const { PRICING } = require('../constants'); // Import PRICING to get package details
+const { PRICING } = require('../config'); // Import PRICING to get package details
 
 class UserDataManager {
     constructor(filePath) {

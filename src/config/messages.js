@@ -1,6 +1,6 @@
-const { PRICING } = require('./config');
+const { PRICING } = require('./index');
 
-const MESSAGES = Object.freeze({
+const MESSAGES = {
     WELCOME: `Selamat datang di *Photo Restoration Bot* ! 👋
 
 Kami adalah layanan edit foto professional yang menggunakan teknologi AI untuk memberikan hasil terbaik. Bot ini dapat membantu Anda dalam berbagai kebutuhan edit foto, mulai dari perbaikan foto lama, pembuatan foto profil profesional, hingga pengeditan foto kreatif.
@@ -41,8 +41,41 @@ Ketik *menu* untuk melihat daftar layanan yang tersedia.`,
 
 ✨ Sisa kesempatan gratis Anda: %trials% kali
 Ketik angka pilihan Anda (1-9)`,
-    
-    WELCOME_PAID: `Siap bosku! 👋
+
+    WELCOME_PAID: `Trial gratis Anda sudah habis. Silakan pilih paket berlangganan untuk melanjutkan:
+
+🟢 Paket Basic
+📸 Kuota: 100 gambar / bulan
+✨ Fitur:
+- Restore Image
+- Remove Background
+- Colorize Image
+💰 Harga: Rp 75.000 / bulan
+🎯 Cocok untuk: pengguna casual, coba-coba edit, hapus background, atau memulihkan foto lama.
+
+🔵 Paket Pro
+📸 Kuota: 300 gambar / bulan
+✨ Fitur:
+- Semua fitur Paket Basic
+- Professional Headshot
+- Transform Image
+- Edit Image
+💰 Harga: Rp 199.000 / bulan
+🎯 Cocok untuk: pekerja kreatif, freelancer, desainer, hingga konten kreator yang butuh hasil lebih profesional.
+
+🔴 Paket Premium
+📸 Kuota: 500 gambar / bulan
+✨ Fitur Lengkap:
+- Semua fitur Basic & Pro
+- Realistic Image (AI)
+- Multi Image Combine
+- Character Image (Ideogram AI)
+💰 Harga: Rp 399.000 / bulan
+🎯 Cocok untuk: bisnis, studio kreatif, agensi, atau user yang sering produksi konten dalam jumlah besar.
+
+Ketik *basic*, *pro*, atau *premium* untuk memilih paket.`,
+
+    MENU_PAID: `Siap bosku! 👋
 
 Berikut adalah layanan edit foto yang tersedia:
 
@@ -75,20 +108,15 @@ Berikut adalah layanan edit foto yang tersedia:
 
 💰 Trial gratis Anda sudah habis. Silakan pilih layanan dan lakukan pembayaran.
 Ketik angka pilihan Anda (1-9)`,
-    
-    START_PROMPT: 'Halo! Ketik "bosku" untuk memulai layanan edit foto 📸',
+
     INVALID_SELECTION: 'Mohon pilih angka sesuai menu yang tersedia bosku 🙏',
     PROCESSING: '⏳ Sedang memproses foto bosku, mohon tunggu...',
     SUCCESS_SUFFIX: '\n\nKetik "bosku" untuk edit foto lainnya',
-    PAYMENT_PROMPT: (price, paymentLink) => `Trial gratis Anda sudah habis. Untuk melanjutkan, silakan lakukan pembayaran sebesar Rp ${price} melalui link pembayaran berikut:
-    
-💳 Link Pembayaran: ${paymentLink}
-
-Pembayaran akan diverifikasi secara otomatis setelah Anda menyelesaikan transaksi.`,
-    PAYMENT_INITIATED: '✅ Link pembayaran telah dibuat. Silakan klik link tersebut untuk melakukan pembayaran.',
-    PAYMENT_SUCCESS: '✅ Pembayaran Anda telah berhasil! Kami akan segera memproses foto Anda...',
+    PAYMENT_PROMPT: (price, paymentLink) => `Untuk melanjutkan, silakan lakukan pembayaran sebesar Rp ${price} melalui link pembayaran berikut:\n\n💳 Link Pembayaran: ${paymentLink}\n\nPembayaran akan diverifikasi secara otomatis setelah Anda menyelesaikan transaksi.`,
+    PAYMENT_SUCCESS: '✅ Pembayaran Anda telah berhasil! Silakan kirim foto yang ingin diproses.',
     PAYMENT_FAILED: '❌ Pembayaran tidak berhasil. Silakan coba lagi atau hubungi admin untuk bantuan.',
-    PROCESS_APPROVED: '✅ Pembayaran Anda telah dikonfirmasi. Memproses foto Anda...'
-});
+    START_PROMPT: 'Halo! Ketik "bosku" untuk memulai layanan edit foto 📸',
+    PAYMENT_INITIATED: '✅ Link pembayaran telah dibuat. Silakan klik link tersebut untuk melakukan pembayaran.'
+};
 
-module.exports = { MESSAGES };
+module.exports = MESSAGES;
